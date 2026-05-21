@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Adventurer's Tome | D&D Starter Guide</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=MedievalSharp&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background-color: #0f0f0f; color: #e2e8f0; }
+        .font-fantasy { font-family: 'Cinzel', serif; }
+        .font-parchment { font-family: 'MedievalSharp', cursive; }
+        .parchment-bg {
+            background-color: #f4e4bc;
+            background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+        }
+        .book-shadow { box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.9); }
+        .card-gradient { background: linear-gradient(180deg, rgba(39,39,42,1) 0%, rgba(24,24,27,1) 100%); }
+        .dice-glow { text-shadow: 0 0 15px rgba(220, 38, 38, 0.8); }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <nav class="fixed top-0 w-full z-50 bg-black/95 border-b border-red-900/50 px-6 py-3 flex justify-between items-center backdrop-blur-sm">
+        <div class="flex items-center space-x-3">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkjvKt5CT5PwJpRF4Zog7lifGLbhdT4tqJXg&s" class="h-8">
+            <span class="font-fantasy text-lg text-white tracking-widest hidden sm:block">Legend Lore</span>
+        </div>
+        <div class="space-x-8 font-fantasy text-xs tracking-[0.2em] text-gray-400">
+            <a href="#intro" class="hover:text-red-500 transition-colors">The Book</a>
+            <a href="#classes" class="hover:text-red-500 transition-colors">Identities</a>
+            <a href="#join" class="hover:text-red-500 transition-colors">Find Group</a>
+        </div>
+    </nav>
+
+    <section id="intro" x-data="{ page: 1 }" class="relative min-h-screen flex items-center justify-center p-6 pt-24 bg-[url('https://www.dndbeyond.com/attachments/thumbnails/0/784/1100/512/01.png')] bg-cover bg-fixed bg-center">
+        <div class="absolute inset-0 bg-black/80"></div>
+        
+        <div class="relative z-10 w-full max-w-5xl min-h-[580px] parchment-bg text-gray-900 rounded-r-xl rounded-l-md book-shadow flex flex-col md:flex-row border-l-[20px] border-red-950 transition-all duration-700">
+            
+            <div class="w-full md:w-1/2 p-12 border-r border-gray-400/30 flex flex-col justify-center items-center text-center">
+                <div x-show="page === 1" x-transition.opacity.duration.500ms>
+                    <img src="https://r2.foundryvtt.com/website-uploads-public/screen/user_70/phb-banner-2024-06-11.webp" class="w-28 mb-8 mx-auto filter drop-shadow-md">
+                    <h1 class="font-fantasy text-4xl font-bold mb-4 leading-tight">Player's<br>Handbook</h1>
+                    <div class="h-1 w-20 bg-red-900 mx-auto mb-4"></div>
+                    <p class="italic text-gray-600 font-serif">"A guide to worlds unknown."</p>
+                </div>
+                <div x-show="page === 2" x-transition.opacity.duration.500ms>
+                    <h2 class="font-fantasy text-2xl font-bold mb-6">The d20 System</h2>
+                    <img src="https://everythingdice.com/cdn/shop/files/BgradeBeacond20.png?v=1723089904" class="w-44 mx-auto mb-4 drop-shadow-2xl">
+                    <p class="text-sm font-semibold text-red-900">One roll to rule them all.</p>
+                </div>
+                <div x-show="page === 3" x-transition.opacity.duration.500ms>
+                    <h2 class="font-fantasy text-2xl font-bold mb-6">Mastering the Role</h2>
+                    <img src="https://framedfantasy.com/cdn/shop/articles/whole_party_wowed_2_5736cf4e-785d-4727-a68b-e9df329a8ffc.jpg?v=1755204845&width=1100" class="rounded-lg shadow-xl mb-6 w-40 mx-auto grayscale hover:grayscale-0 transition-all">
+                </div>
+                <div x-show="page === 4" x-transition.opacity.duration.500ms>
+                    <h2 class="font-fantasy text-2xl font-bold mb-6">Gather Your Party</h2>
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSA-W3JbM4T-qW7uW2sOTiDIkTWSqAJfp4yAg&s" class="w-44 mx-auto drop-shadow-xl">
+                </div>
+            </div>
+
+            <div class="w-full md:w-1/2 p-12 flex flex-col justify-between">
+                <div>
+                    <div x-show="page === 1" x-transition.opacity.duration.500ms>
+                        <h2 class="font-fantasy text-2xl mb-6 border-b border-red-900/30 pb-2">The Call to Adventure</h2>
+                        <p class="font-parchment text-xl leading-relaxed mb-4 text-gray-800">In D&D, you and your friends create characters who go on quests in a fantasy setting.</p>
+                        <p class="text-sm text-gray-600">The Dungeon Master (DM) serves as the game's referee and storyteller.</p>
+                    </div>
+                    <div x-show="page === 2" x-transition.opacity.duration.500ms>
+                        <h2 class="font-fantasy text-2xl mb-6 border-b border-red-900/30 pb-2">Rolling Dice</h2>
+                        <p class="mb-4 text-sm leading-relaxed">Whether you are swinging a sword or jumping a chasm, the d20 decides the outcome.</p>
+                        <ul class="text-xs space-y-2 text-gray-700 italic">
+                            <li>• Roll 1-9: Likely failure.</li>
+                            <li>• Roll 10-19: Likely success.</li>
+                            <li>• Natural 20: Critical success!</li>
+                        </ul>
+                    </div>
+                    <div x-show="page === 3" x-transition.opacity.duration.500ms>
+                        <h2 class="font-fantasy text-2xl mb-6 border-b border-red-900/30 pb-2">Imagination First</h2>
+                        <p class="text-sm leading-relaxed">D&D is about choices. There are no "right" answers—only consequences that make the story better.</p>
+                    </div>
+                    <div x-show="page === 4" x-transition.opacity.duration.500ms>
+                        <h2 class="font-fantasy text-2xl mb-6 border-b border-red-900/30 pb-2">Start Your Quest</h2>
+                        <p class="mb-6 text-sm">Now, scroll down to choose your identity and find a group in the tavern below.</p>
+                        <a href="#classes" class="inline-block bg-red-900 text-white px-6 py-2 rounded font-fantasy text-xs hover:bg-red-800 transition shadow-lg">Begin Character Creation</a>
+                    </div>
+                </div>
+
+                <div class="flex justify-between items-center mt-12">
+                    <button @click="page--" x-show="page > 1" class="text-red-900 font-bold text-xs uppercase tracking-widest hover:underline">← Back</button>
+                    <span class="text-[10px] text-gray-400 uppercase tracking-widest" x-text="'Chapter ' + page"></span>
+                    <button @click="page++" x-show="page < 4" class="bg-red-900 text-white px-5 py-2 rounded-sm font-fantasy text-xs hover:bg-red-800 transition">Turn Page →</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="classes" class="py-32 bg-zinc-950">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-20">
+                <h2 class="font-fantasy text-4xl text-red-600 mb-4 tracking-tighter">Forge Your Identity</h2>
+                <p class="text-gray-500 max-w-2xl mx-auto italic">A hero is more than just stats. They are a combination of heritage and skill.</p>
+            </div>
+            
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
+                <div class="card-gradient border border-zinc-800 p-8 rounded-xl group hover:border-red-600 transition-all duration-500">
+                    <img src="https://preview.redd.it/art-comm-tyson-ty-vance-human-male-fighter-by-gerry-arthur-v0-uxhk637yxg7e1.jpeg?auto=webp&s=ebee390e035e0d1193ef00eee4a2d9aed7297727" class="w-full h-64 object-cover rounded-lg mb-6 filter grayscale group-hover:grayscale-0 transition duration-700 shadow-2xl">
+                    <h3 class="font-fantasy text-2xl text-red-500 mb-2">Human Fighter</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed italic mb-4">"The versatile veteran."</p>
+                    <p class="text-gray-500 text-xs">Fighters are masters of martial combat, skilled with every weapon and armor. As a human, your ambition and adaptability have no limits.</p>
+                </div>
+
+                <div class="card-gradient border border-zinc-800 p-8 rounded-xl group hover:border-blue-600 transition-all duration-500">
+                    <img src="https://abardsmusings.wordpress.com/wp-content/uploads/2016/01/elf-wizard-female-5.jpg" class="w-full h-64 object-cover rounded-lg mb-6 filter grayscale group-hover:grayscale-0 transition duration-700 shadow-2xl">
+                    <h3 class="font-fantasy text-2xl text-blue-400 mb-2">High Elf Wizard</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed italic mb-4">"Scholar of the arcane."</p>
+                    <p class="text-gray-500 text-xs">Wizards use long years of study to manipulate reality. Elves, with their centuries-long lifespans, are the ultimate practitioners of magic.</p>
+                </div>
+
+                <div class="card-gradient border border-zinc-800 p-8 rounded-xl group hover:border-yellow-600 transition-all duration-500">
+                    <img src="https://sagegamers.com/wp-content/uploads/2021/03/dwarf-paladin-1.png" class="w-full h-64 object-cover rounded-lg mb-6 filter grayscale group-hover:grayscale-0 transition duration-700 shadow-2xl">
+                    <h3 class="font-fantasy text-2xl text-yellow-500 mb-2">Dwarf Paladin</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed italic mb-4">"The unbreakable oath."</p>
+                    <p class="text-gray-500 text-xs">Combining Dwarven resilience with holy conviction, Paladins are the immovable objects of the battlefield, bound by sacred duty.</p>
+                </div>
+
+                <div class="card-gradient border border-zinc-800 p-8 rounded-xl group hover:border-purple-600 transition-all duration-500">
+                    <img src="https://i.redd.it/qlvdvg0af2671.jpg" class="w-full h-64 object-cover rounded-lg mb-6 filter grayscale group-hover:grayscale-0 transition duration-700 shadow-2xl">
+                    <h3 class="font-fantasy text-2xl text-purple-500 mb-2">Tiefling Rogue</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed italic mb-4">"Shadows and silver tongues."</p>
+                    <p class="text-gray-500 text-xs">Masters of stealth and precision. Tieflings use their natural cunning and infernal heritage to disappear where others are seen.</p>
+                </div>
+
+                <div class="card-gradient border border-zinc-800 p-8 rounded-xl group hover:border-orange-700 transition-all duration-500">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJ90IcAc0dz10HLcvRt0h6Apa7_HDL1sjUEw&s" class="w-full h-64 object-cover rounded-lg mb-6 filter grayscale group-hover:grayscale-0 transition duration-700 shadow-2xl">
+                    <h3 class="font-fantasy text-2xl text-orange-600 mb-2">Dragonborn Barbarian</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed italic mb-4">"The primal storm."</p>
+                    <p class="text-gray-500 text-xs">Dragonborn channel their draconic fury into a terrifying rage. In combat, they are primal forces of nature that few can survive.</p>
+                </div>
+
+                <div class="card-gradient border border-zinc-800 p-8 rounded-xl group hover:border-pink-600 transition-all duration-500">
+                    <img src="https://i.redd.it/c91i3e081o901.jpg" class="w-full h-64 object-cover rounded-lg mb-6 filter grayscale group-hover:grayscale-0 transition duration-700 shadow-2xl">
+                    <h3 class="font-fantasy text-2xl text-pink-500 mb-2">Half-Elf Bard</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed italic mb-4">"The weave of words."</p>
+                    <p class="text-gray-500 text-xs">Bards weave magic through music and speech. Half-elves excel here, walking between two worlds with grace and charm.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="join" class="py-32 bg-red-950 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/dark-matter.png')]"></div>
+        <div class="max-w-xl mx-auto px-6 relative z-10">
+            <div class="bg-zinc-900/90 backdrop-blur-md p-10 rounded-2xl shadow-2xl border border-red-500/30">
+                <h2 class="font-fantasy text-3xl mb-8 text-center text-white tracking-widest uppercase">Find Your Table</h2>
+                <form class="space-y-6">
+                    <div>
+                        <label class="block text-[10px] font-fantasy uppercase tracking-widest text-red-500 mb-2">Adventurer Name</label>
+                        <input type="text" required class="w-full bg-black/40 border border-zinc-800 p-4 rounded-lg text-white outline-none focus:border-red-600 transition">
+                    </div>
+                    <div class="grid grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-[10px] font-fantasy uppercase tracking-widest text-red-500 mb-2">Years of Age</label>
+                            <input type="number" required class="w-full bg-black/40 border border-zinc-800 p-4 rounded-lg text-white outline-none focus:border-red-600 transition">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] font-fantasy uppercase tracking-widest text-red-500 mb-2">Current Realm (Location)</label>
+                            <input type="text" required class="w-full bg-black/40 border border-zinc-800 p-4 rounded-lg text-white outline-none focus:border-red-600 transition">
+                        </div>
+                    </div>
+                    <button type="submit" class="w-full bg-red-700 hover:bg-red-600 text-white font-fantasy py-5 rounded-lg shadow-xl uppercase tracking-widest transition-all active:scale-[0.98]">
+                        Join the Initiative
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer x-data="{ 
+        roll: '?', 
+        isRolling: false,
+        rollDice() {
+            this.isRolling = true;
+            this.roll = '...';
+            setTimeout(() => {
+                this.roll = Math.floor(Math.random() * 20) + 1;
+                this.isRolling = false;
+            }, 600);
+        }
+    }" class="bg-black py-20 border-t border-red-900/40 flex flex-col items-center">
+        
+        <div class="text-center">
+            <h3 class="font-fantasy text-xl text-red-600 mb-8 tracking-[0.3em] uppercase">The Dice Tower</h3>
+            <div class="relative inline-block mb-10 group cursor-pointer" @click="rollDice()">
+                <svg class="w-36 h-36 text-zinc-900 fill-current drop-shadow-[0_0_15px_rgba(220,38,38,0.2)] group-hover:text-zinc-800 transition-colors" viewBox="0 0 100 100">
+                    <path d="M50 5 L90 25 L90 75 L50 95 L10 75 L10 25 Z" stroke="#7f1d1d" stroke-width="1.5"/>
+                    <path d="M10 25 L50 45 L90 25 M50 45 L50 95 M10 75 L50 45 L90 75" stroke="#450a0a" stroke-width="1" fill="none"/>
+                </svg>
+                <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                    <span class="text-5xl font-fantasy text-white dice-glow" 
+                          :class="isRolling ? 'animate-pulse scale-110' : ''"
+                          x-text="roll"></span>
+                </div>
+            </div>
+            
+            <div x-show="roll === 20" x-transition class="text-yellow-500 font-fantasy text-sm animate-bounce mb-4">CRITICAL SUCCESS!</div>
+            <div x-show="roll === 1" x-transition class="text-red-800 font-fantasy text-sm animate-pulse mb-4">CRITICAL FAILURE...</div>
+
+            <p class="text-gray-600 text-[9px] uppercase tracking-[0.5em] mt-10">
+                &copy; 2025 LEGEND LORE | WIZARDS OF THE COAST REFERENCE
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>
